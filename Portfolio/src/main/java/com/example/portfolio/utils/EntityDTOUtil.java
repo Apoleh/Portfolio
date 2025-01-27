@@ -1,9 +1,8 @@
 package com.example.portfolio.utils;
 
 
-import com.example.portfolio.MyselfSubdomain.DataLayer.Zako;
-import com.example.portfolio.MyselfSubdomain.PresentationLayer.ZakoRequestModel;
-import com.example.portfolio.MyselfSubdomain.PresentationLayer.ZakoResponseModel;
+import com.example.portfolio.FelixSubdomain.DataLayer.Felix;
+import com.example.portfolio.FelixSubdomain.PresentationLayer.FelixResponseModel;
 import com.example.portfolio.ProjectSubdomain.DataLayer.Project;
 import com.example.portfolio.ProjectSubdomain.PresentationLayer.ProjectRequestModel;
 import com.example.portfolio.ProjectSubdomain.PresentationLayer.ProjectResponseModel;
@@ -13,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -21,10 +19,10 @@ import java.util.UUID;
 public class EntityDTOUtil {
 
 
-    public static ZakoResponseModel toZakoResponseDTO(Zako zako) {
-        ZakoResponseModel zakoResponseModel  = new ZakoResponseModel ();
-        BeanUtils.copyProperties(zako, zakoResponseModel);
-        return zakoResponseModel;
+    public static FelixResponseModel toZakoResponseDTO(Felix zako) {
+        FelixResponseModel felixResponseModel = new FelixResponseModel();
+        BeanUtils.copyProperties(zako, felixResponseModel);
+        return felixResponseModel;
     }
 
 

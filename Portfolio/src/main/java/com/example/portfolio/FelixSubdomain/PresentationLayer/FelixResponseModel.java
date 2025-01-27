@@ -1,4 +1,4 @@
-package com.example.portfolio.MyselfSubdomain.PresentationLayer;
+package com.example.portfolio.FelixSubdomain.PresentationLayer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ZakoResponseModel {
+public class FelixResponseModel {
     String zakoId;
     int age;
     String nationality;

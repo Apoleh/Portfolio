@@ -1,7 +1,7 @@
 package com.example.portfolio.utils;
 
-import com.example.portfolio.MyselfSubdomain.DataLayer.Zako;
-import com.example.portfolio.MyselfSubdomain.DataLayer.ZakoRepo;
+import com.example.portfolio.FelixSubdomain.DataLayer.Felix;
+import com.example.portfolio.FelixSubdomain.DataLayer.FelixRepository;
 import com.example.portfolio.ProjectSubdomain.DataLayer.Project;
 import com.example.portfolio.ProjectSubdomain.DataLayer.ProjectRepository;
 import com.example.portfolio.SkillsSubdomain.DataLayer.Skill;
@@ -21,47 +21,49 @@ import java.util.List;
 public class DataSetupServiceReview implements CommandLineRunner {
 
 
-    private final ZakoRepo zakoRepo;
+    private final FelixRepository felixRepository;
     private final ProjectRepository projectRepo;
     private  final SkillRepository skillRepo;
 
     @Override
     public void run(String... args) throws Exception {
-    setupZako();
-    setupProjects();
-    setupSkills();
+        setupFelix();
+        setupProjects();
+        setupSkills();
     }
 
-    private void setupZako() {
-        Zako zako1 = buildZako("zakoId1", "Zakaria Mohamed Boudboub", "I’ve always been a huge " +
-                "fan of football, and Real Madrid holds a special place in my heart as my favorite team." +
-                " The passion, strategy, and excitement of the game always draw me in. Outside of football," +
-                " I have a deep love for math—it’s fascinating to explore its patterns and problem-solving nature." +
-                " Coding is another big interest of mine, where I get to merge logic with creativity to build new " +
-                "things. Along with these, I enjoy staying active through sports, constantly challenging myself and " +
-                "pushing my limits. Whether it's learning something new or engaging in a good game, I thrive on both" +
-                " mental and physical challenges.", 19, "Algerian");
+    private void setupFelix() {
+        Felix felix1 = buildFelix("felixId1", "Felix", "Zhang", 19,
+                "Chinese", "I’ve always been passionate about video games, not just " +
+                        "as a player but as someone fascinated by how they’re made. This curiosity " +
+                        "led me to coding, where I discovered a love for creating and problem-solving. " +
+                        "To me, coding is a way to bring ideas to life, whether that’s crafting game " +
+                        "mechanics, developing engaging applications, or tackling real-world challenges. " +
+                        "Combining my love for games with my coding skills inspires me to push " +
+                        "boundaries and create experiences that others can enjoy, just as I’ve " +
+                        "enjoyed so many myself.");
 
-        Flux.just(zako1)
-                .flatMap(zako -> {
-                    return zakoRepo.findZakoByZakoId(zako.getZakoId())
-                            .doOnTerminate(() -> System.out.println("Terminated: " + zako.getZakoId()))
+        Flux.just(felix1)
+                .flatMap(felix -> {
+                    return felixRepository.findFelixByFelixId(felix.getFelixId())
+                            .doOnTerminate(() -> System.out.println("Terminated: " + felix.getFelixId()))
                             .switchIfEmpty(Mono.defer(() -> {
-                                System.out.println("Inserting review: " + zako.getZakoId());
-                                return zakoRepo.save(zako); // Save if review doesn't exist
+                                System.out.println("Inserting review: " + felix.getFelixId());
+                                return felixRepository.save(felix); // Save if review doesn't exist
                             }));
                 })
                 .subscribe();
     }
 
 
-    private Zako buildZako(String zakoId, String name, String interest, int age, String nationality) {
-        return Zako.builder()
-                .zakoId(zakoId)
-                .name(name)
-                .interest(interest)
+    private Felix buildFelix(String felixId, String firstName, String lastName, int age, String nationality, String aboutMe) {
+        return Felix.builder()
+                .felixId(felixId)
+                .firstName(firstName)
+                .lastName(lastName)
                 .age(age)
                 .nationality(nationality)
+                .aboutMe(aboutMe)
                 .build();
     }
 
@@ -159,7 +161,7 @@ public class DataSetupServiceReview implements CommandLineRunner {
         Skill react = buildSkill("skillId3", "React", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg");
         Skill typescript = buildSkill("skillId4", "TypeScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg");
         Skill mongodb = buildSkill("skillId5", "MongoDb", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg");
-        Skill javascript = buildSkill("skillId6", "JavaScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg");
+        Skill javascript = buildSkill("skillId6", "JavaScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@");
         Skill mysql = buildSkill("skillId7", "Mysql", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg");
         Skill dotnet = buildSkill("skillId8", ".Net", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-plain.svg");
         Skill cshtml = buildSkill("skillId9", "csHtml", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg");
