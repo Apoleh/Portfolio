@@ -1,151 +1,71 @@
-/* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  .page-title {
-    text-align: center;
-    font-size: 4rem;
-    color: #3bc36b;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    margin-top: 80px;
-    font-weight: 700;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Zako Section */
-  .zako-section {
-    padding: 50px;
-    background: linear-gradient(120deg, rgba(0, 0, 0, 0.8) 40%, rgba(59, 195, 107, 0.1) 80%);
-    border-radius: 20px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .zako-section:hover {
-    transform: scale(1.02);
-    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Zako List */
-  .zako-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    justify-items: center;
-    margin-top: 40px;
-    position: relative;
-  }
-  
-  /* Zako Item */
-  .zako-item {
-    background: #2e2e2e;
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease, box-shadow 0.3s ease;
-    width: 100%;
-    max-width: 300px;
-    color: #fff;
-  }
-  
-  .zako-item:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-  }
-  
-  .zako-item-content {
-    z-index: 1;
-    position: relative;
-    transition: transform 0.4s ease;
-  }
-  
-  /* Hover Text Animation */
-  .zako-item:hover .zako-item-content {
-    transform: translateY(-10px);
-  }
-  
-  .zako-nationality,
-  .zako-age {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 8px 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #3bc36b;
-    transition: color 0.3s ease;
-  }
-  
-  .zako-item:hover .zako-nationality,
-  .zako-item:hover .zako-age {
-    color: #fff;
-  }
-  
-  /* Zako Item Hover Effect */
-  .zako-item:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    z-index: -1;
-    transition: opacity 0.4s ease;
-  }
-  
-  .zako-item:hover:before {
-    opacity: 0.3;
-  }
-  
-  /* Loading State */
-  .loading {
-    text-align: center;
-    font-size: 2rem;
-    color: #3bc36b;
-    font-weight: bold;
-    animation: pulseLoading 2s ease-in-out infinite;
-  }
-  
-  @keyframes pulseLoading {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  /* No Items Available */
-  .no-items {
-    text-align: center;
-    font-size: 2rem;
-    color: #f4f4f4;
-    font-weight: 500;
-    animation: fadeOutIn 1.5s ease infinite alternate;
-  }
-  
-  @keyframes fadeOutIn {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.6;
-    }
-  }
-  
+/* Felix List Section */
+.felix-section {
+  background: radial-gradient(circle, #1a1a2e, #16213e); /* Dark gradient */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #0efcff; /* Neon cyan text */
+  font-family: 'Press Start 2P', monospace; /* Pixel/arcade font */
+  height: 100vh;
+  position: relative;
+  padding: 20px;
+}
+
+/* Felix Items List */
+.felix-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+  z-index: 2;
+}
+
+.felix-item {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #0efcff;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
+  backdrop-filter: blur(5px); /* Adding blur effect */
+  color: #fff;
+  font-size: 1rem;
+  position: relative;
+}
+
+.felix-item:hover {
+  box-shadow: 0 0 30px rgba(14, 252, 255, 0.8);
+}
+
+.felix-item-content p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+/* Styling for each item details */
+.felix-nationality,
+.felix-age,
+.felix-about-me {
+  color: rgba(14, 252, 255, 0.9);
+  text-shadow: 0 0 10px rgba(14, 252, 255, 0.6);
+}
+
+/* Loading text */
+.loading-text {
+  font-size: 1.5rem;
+  color: #ff4d6d; /* Neon magenta */
+  text-align: center;
+  z-index: 2;
+}
+
+/* No Items Available */
+.no-items {
+  font-size: 1.2rem;
+  color: #ff4d6d; /* Neon magenta */
+  text-align: center;
+  z-index: 2;
+}

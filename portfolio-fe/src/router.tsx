@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { PathRoutes } from './path.routes';
 import HomePage from './pages/HomePage';
-import ZakoPage from './pages/ZakoPage';
+import FelixPage from './pages/FelixPage';
 import ProjectPage from './pages/ProjectPage';
 import AddProjectPage from './pages/AddProjectPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: PathRoutes.ZakoPage,
-    element: <ZakoPage />,
+    path: PathRoutes.FelixPage,
+    element: <FelixPage />,
   },
 
   {

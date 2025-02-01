@@ -1,104 +1,73 @@
 .project-section {
-    padding: 20px;
-  }
-  
-  .page-title {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  
-  .project-card {
-    cursor: pointer;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    background: linear-gradient(135deg, #4c1a8f, #5e2c8d); /* Metallic Dark Purple */
-    position: relative;
-  }
-  
-  .project-card:hover {
-    transform: scale(0.95); /* Slightly smaller to simulate falling behind */
-    z-index: -1; /* Ensure it falls behind */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Less intense shadow to emphasize depth */
-  }
-  
-  .project-card:not(:hover) {
-    z-index: 1; /* Default stacking context */
-  }
-  
-  .project-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .card-img-wrapper {
-    height: 200px;
-    overflow: hidden;
-  }
-  
-  .project-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .card-body {
-    text-align: center;
-    padding: 15px;
-  }
-  
-  .project-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .project-description {
-    font-size: 1rem;
-    color: #ddd; /* Slightly lighter color for contrast */
-  }
-  
-  .card-footer {
-    background: #f8f9fa;
-    padding: 10px;
-    position: relative;
-  }
-  
-  .skill-carousel {
-    display: flex;
-    gap: 10px;
-    overflow: hidden; /* Prevent logos from overflowing */
-    position: relative;
-  }
-  
-  .skill-logos {
-    display: flex;
-    gap: 10px;
-    animation: scrollSkills 5s linear infinite; /* Faster speed */
-  }
-  
-  .skill-logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 50%;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Floating effect */
-  }
-  
-  .skill-logo:hover {
-    transform: scale(1.2);
-    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3); /* More intense shadow on hover */
-  }
-  
-  @keyframes scrollSkills {
-    0% {
-      transform: translateX(200%); /* Start from the right */
-    }
-    100% {
-      transform: translateX(-100%); /* Move to the left */
-    }
-  }
-  
+  background: radial-gradient(circle, #1a1a2e, #16213e); /* Dark gradient */
+  color: #0efcff; /* Neon cyan text */
+  font-family: 'Press Start 2P', monospace; /* Pixel/arcade font */
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #0efcff;
+  margin-bottom: 30px;
+}
+
+.project-card {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border: 2px solid #0efcff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(14, 252, 255, 1);
+}
+
+.project-card .card-footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background: transparent;
+}
+
+.skill-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.8);
+}
+
+.skill-logo:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 10px 25px rgba(0, 255, 255, 1);
+}
+
+.no-items {
+  font-size: 1.2rem;
+  color: #ff4d6d; /* Neon magenta */
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 77, 109, 0.8);
+}
+
+.btn-primary,
+.btn-danger {
+  font-family: 'Press Start 2P', monospace;
+  border-radius: 10px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+  box-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+}

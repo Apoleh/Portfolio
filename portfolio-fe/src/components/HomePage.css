@@ -1,32 +1,29 @@
 /* Main Home Page */
 .homePage {
-    background: black; /* Black background */
+    background: radial-gradient(circle, #1a1a2e, #16213e); /* Dark gradient with depth */
     display: flex;
-    flex-direction: column; /* Vertical layout */
-    justify-content: center; /* Center content */
-    align-items: center; /* Center content vertically */
-    color: #00ff00; /* Neon green text color */
-    font-family: 'Courier New', Courier, monospace; /* Matrix-style font */
-    height: 100vh; /* Full viewport height */
-    position: relative; /* Relative for the falling text effect */
-    overflow: hidden; /* Hide overflow */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #0efcff; /* Neon cyan text */
+    font-family: 'Press Start 2P', monospace; /* Pixel/arcade font */
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Falling Binary Matrix Effect */
+/* Matrix Rain */
 @keyframes matrixRain {
     0% {
-        transform: translateY(-100%); /* Start above the viewport */
-        color: white; /* Start as white */
-        opacity: 0; /* Initially invisible */
+        transform: translateY(-100%);
+        opacity: 0;
     }
     50% {
-        color: rgba(0, 255, 0, 0.7); /* Mid-fall, transition to green */
-        opacity: 1; /* Fully visible in the middle */
+        opacity: 1;
     }
     100% {
-        transform: translateY(100%); /* Fall down to the bottom */
-        color: rgba(0, 255, 0, 0.7); /* Stay neon green */
-        opacity: 0.1; /* Fade out towards the bottom */
+        transform: translateY(100%);
+        opacity: 0.1;
     }
 }
 
@@ -41,129 +38,66 @@
 
 .matrixColumn {
     position: absolute;
-    top: -200px; /* Start above the viewport */
-    width: 10px; /* Thin columns */
-    font-size: 1rem; /* Letter size */
+    top: -200px;
+    width: 15px;
+    font-size: 1.2rem;
     animation: matrixRain linear infinite;
-    animation-duration: 4s; /* Adjust for speed */
-    animation-delay: calc(-5s * var(--delay)); /* Staggered start */
+    animation-duration: 6s;
+    animation-delay: calc(-6s * var(--delay));
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .matrixColumn span {
     display: block;
-    opacity: 0.1; /* Fade effect */
-    animation: fadeIn 0.1s linear infinite;
-    animation-delay: calc(0.1s * var(--delay));
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0.1;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.1;
-    }
-}
-
-/* Text Content */
+/* Welcome Text */
 .welcomeText {
-    z-index: 2; /* Above the falling text */
-    text-align: center;
+    z-index: 2;
+    text-align: left; /* Align text to the left */
+    align-self: flex-start; /* Position it to the left */
+    margin-left: 50px; /* Add some margin for spacing */
 }
 
 h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 10px;
-    color: #00ff00;
+    color: #ff4d6d; /* Magenta for contrast */
 }
 
 h1 {
-    font-size: 4rem;
-    line-height: 1.2;
+    font-size: 3rem;
     margin-bottom: 20px;
-    color: #00ff00;
+    color: #0efcff;
+    text-shadow: 0 0 10px rgba(14, 252, 255, 0.8);
 }
 
 .paragraph {
     font-size: 1.2rem;
     max-width: 400px;
     line-height: 1.6;
-    color: rgba(0, 255, 0, 0.9);
+    color: rgba(14, 252, 255, 0.9);
 }
 
+/* Buttons */
 .welcomeText .button {
-    background: none; /* No background color */
-    border: 2px solid #00ff00; /* Neon green border */
-    color: #00ff00; /* Neon green text */
+    background: linear-gradient(45deg, #ff4d6d, #0efcff);
+    border: none;
+    color: white;
     font-size: 1.2rem;
     padding: 12px 24px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
     transition: all 0.3s ease-in-out;
-    z-index: 10; /* Ensure it's above the matrix effect */
-}
-
-.welcomeText .button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 255, 0, 0.2);
-    transform: scaleX(0);
-    transform-origin: 100%;
-    animation: matrixButtonAnimation 1s forwards;
-    z-index: -1; /* Behind the button text */
+    z-index: 10;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
 .welcomeText .button:hover {
-    background: #00ff00;
-    color: black;
-    transform: scale(1.05);
-}
-
-@keyframes matrixButtonAnimation {
-    to {
-        transform: scaleX(1);
-    }
-}
-
-/* Optional - Add a glowing effect on hover */
-.welcomeText .button:hover {
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
-    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
-}
-
-/* Typing Effect */
-.typing {
-    display: inline-block;
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflowing text during animation */
-    font-size: 2rem; /* Adjust the size of the typing effect */
-    border-right: 2px solid #00ff00; /* Blinking cursor */
-    animation: typing 4s steps(20, end), blink 0.5s step-end infinite;
-}
-
-@keyframes typing {
-    from {
-        width: 0; /* Start with no text visible */
-    }
-    to {
-        width: 100%; /* Fully display text */
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent; /* Blink cursor */
-    }
+    box-shadow: 0 0 20px rgba(14, 252, 255, 0.8);
+    transform: scale(1.1);
 }

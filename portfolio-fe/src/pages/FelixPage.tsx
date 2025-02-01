@@ -1,11 +1,11 @@
-import ZakoList from '../features/ZakoList';
+import FelixList from '../features/FelixList';
 import { NavBar } from '../components/NavBar';
 
-export default function ZakoPage(): JSX.Element {
+export default function FelixPage(): JSX.Element {
   return (
     <div>
       <NavBar />
-      <ZakoList />
+      <FelixList />
     </div>
   );
 }

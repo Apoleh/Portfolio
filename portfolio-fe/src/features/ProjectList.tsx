@@ -34,68 +34,58 @@ const ProjectList: React.FC = (): JSX.Element => {
     navigate('/addProject');
   };
 
-  const handleUpdateProject = (projectId: number): void => {
-    navigate(`/updateProject/${projectId}`);
+  // const handleUpdateProject = (projectId: number): void => {
+  //   navigate(`/updateProject/${projectId}`);
+  // };
+
+  const handleRemoveAllProjects = (): void => {
+    setProjects([]); // Clear all projects
   };
 
   if (loading) {
-    return <div>Loading projects...</div>;
+    return <div className="loading-text">Loading projects...</div>;
   }
 
   return (
-    <div className="project-section">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="page-title">Projects</h2>
-        <button className="btn btn-primary" onClick={handleAddProject}>
-          Add
-        </button>
-      </div>
-      <div className="row">
-        {projects.length > 0 ? (
-          projects.map((project) => (
-            <div className="col-md-6 mb-4" key={project.projectId}>
-              {/* Update Button Outside the Card */}
-              <div className="d-flex justify-content-end mb-2">
-                <button
-                  className="btn btn-secondary btn-sm"
-                  onClick={() => handleUpdateProject(project.projectId)}
-                >
-                  Update
-                </button>
-              </div>
-              {/* Card Content */}
-              <div className="card project-card">
-                <div className="card-img-wrapper">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.projectName}
-                    className="card-img-top project-image"
-                  />
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title project-name">{project.projectName}</h5>
-                  <p className="card-text project-description">{project.description}</p>
-                </div>
-                <div className="card-footer">
-                  <div className="skill-logos">
-                    {project.skills.map((skill) => (
-                      <img
-                        key={skill.skillId}
-                        src={skill.skillLogo}
-                        alt={skill.skillName}
-                        className="skill-logo"
-                      />
-                    ))}
+      <div className="project-section">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h2 className="page-title">Projects</h2>
+          <div>
+            <button className="btn btn-primary me-2" onClick={handleAddProject}>
+              Add
+            </button>
+            <button className="btn btn-danger" onClick={handleRemoveAllProjects}>
+              Remove All
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          {projects.length > 0 ? (
+              projects.map((project) => (
+                  <div className="col-md-6 mb-4" key={project.projectId}>
+                    <div className="card project-card">
+                      <div className="card-body">
+                        <h5 className="project-name">{project.projectName}</h5>
+                        <p className="project-description">{project.description}</p>
+                      </div>
+                      <div className="card-footer">
+                        {project.skills.map((skill) => (
+                            <img
+                                key={skill.skillId}
+                                src={skill.skillLogo}
+                                alt={skill.skillName}
+                                className="skill-logo"
+                            />
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="no-items">No projects available</p>
-        )}
+              ))
+          ) : (
+              <p className="no-items">No projects available</p>
+          )}
+        </div>
       </div>
-    </div>
   );
 };
 

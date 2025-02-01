@@ -1,11 +1,11 @@
 import axiosInstance from '../../Shared/Api/axiosInstance'; // Adjust the relative path
-import { zakoResponseModel } from '../model/zakoResponseModel';
+import { felixResponseModel } from '../model/felixResponseModel';
 
-export const getAllzako = async (): Promise<zakoResponseModel[]> => {
+export const getAllFelix = async (): Promise<felixResponseModel[]> => {
   // Use menuResponseModel[] directly in the get call
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const response = await axiosInstance.get<zakoResponseModel[]>(
-    `${backendUrl}/api/v1/zako`
+  const response = await axiosInstance.get<felixResponseModel[]>(
+    `${backendUrl}/api/v1/felix`
   );
   return response.data;
 };

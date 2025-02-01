@@ -1,5 +1,8 @@
-export interface zakoResponseModel {
-  zakoId: number;
-  nationality: string;
+export interface felixResponseModel {
+  felixId: string;
+  firstName: string;
+  lastName: string;
   age: number;
+  nationality: string;
+  aboutMe: string;
 }

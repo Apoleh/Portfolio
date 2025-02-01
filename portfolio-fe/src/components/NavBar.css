@@ -1,0 +1,68 @@
+/* Navbar Styling */
+nav {
+    background: #1a1a2e; /* Dark background for the navbar */
+    color: #0efcff; /* Neon cyan text */
+    font-family: 'Press Start 2P', monospace; /* Pixel/arcade font */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Logo Section */
+nav > div:first-child {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff4d6d; /* Neon magenta for contrast */
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.8);
+}
+
+/* Menubar Section */
+[role='menubar'] {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Navigation Links */
+nav a {
+    text-decoration: none;
+    color: #0efcff;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(14, 252, 255, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #ff4d6d; /* Change color to magenta on hover */
+    text-shadow: 0 0 20px rgba(255, 77, 109, 1); /* Glowing effect on hover */
+}
+
+/* Button Styling */
+nav button {
+    background: linear-gradient(45deg, #ff4d6d, #0efcff);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+nav button:disabled {
+    background: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+nav button:hover {
+    box-shadow: 0 0 20px rgba(14, 252, 255, 0.8);
+    transform: scale(1.1);
+}

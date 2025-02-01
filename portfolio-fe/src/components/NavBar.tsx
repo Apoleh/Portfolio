@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { PathRoutes } from '../path.routes';
 import { NavLink } from 'react-router-dom';
+import './NavBar.css';
 
 const navigationItems = [
   { label: 'Home', path: PathRoutes.HomePage },
-  { label: 'Account', path: '/zako' },
+  { label: 'Felix', path: '/felix' },
   { label: 'Projects', path: '/project' },
 ];
 
@@ -35,7 +36,7 @@ export const NavBar: React.FC = () => {
       aria-label="Main navigation"
     >
       <div >
-        <div>Noodle Star</div>
+        <div>Portfolio</div>
         <div role="menubar">
           {navigationItems.map(item => (
             <NavLink

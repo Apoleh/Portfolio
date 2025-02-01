@@ -1,7 +1,7 @@
 export enum PathRoutes {
   Default = '/',
   HomePage = '/home',
-  ZakoPage = '/zako',
+  FelixPage = '/felix',
   ProjectPage= '/project',
   AddProjectPage= '/addProject',
   UpdateProjectPage= '/updateProject/:projectId'
