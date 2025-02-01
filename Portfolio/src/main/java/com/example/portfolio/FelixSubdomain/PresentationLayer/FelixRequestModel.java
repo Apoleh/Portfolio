@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FelixRequestModel {
-     int age;
-     String nationality;
-     String name;
-     String interest;
+    String firstName;
+    String lastName;
+    int age;
+    String nationality;
+    String aboutMe;
 }

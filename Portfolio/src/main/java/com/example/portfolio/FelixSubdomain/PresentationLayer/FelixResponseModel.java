@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FelixResponseModel {
-    String zakoId;
+    String felixId;
+    String firstName;
+    String lastName;
     int age;
     String nationality;
-    String name;
-    String interest;
+    String aboutMe;
 }
