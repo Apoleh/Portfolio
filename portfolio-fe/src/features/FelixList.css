@@ -1,71 +1,92 @@
-/* Felix List Section */
 .felix-section {
-  background: radial-gradient(circle, #1a1a2e, #16213e); /* Dark gradient */
+  background: radial-gradient(circle, #1a1a2e, #16213e);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #0efcff; /* Neon cyan text */
-  font-family: 'Press Start 2P', monospace; /* Pixel/arcade font */
+  color: #0efcff;
+  font-family: 'Press Start 2P', monospace;
   height: 100vh;
   position: relative;
   padding: 20px;
+  width: 100%;
 }
 
-/* Felix Items List */
 .felix-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin-top: 20px;
-  z-index: 2;
+  width: 90%;
+  max-width: 1400px;
 }
 
 .felix-item {
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  flex: 1 1 80%;
+  max-width: 1000px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
   border: 2px solid #0efcff;
   cursor: pointer;
   text-align: center;
   box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
-  backdrop-filter: blur(5px); /* Adding blur effect */
+  backdrop-filter: blur(5px);
   color: #fff;
   font-size: 1rem;
   position: relative;
+  transition: box-shadow 0.3s ease;
 }
 
 .felix-item:hover {
   box-shadow: 0 0 30px rgba(14, 252, 255, 0.8);
 }
 
-.felix-item-content p {
-  margin: 10px 0;
-  font-size: 1rem;
+.felix-item-content {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
 }
 
-/* Styling for each item details */
-.felix-nationality,
-.felix-age,
 .felix-about-me {
-  color: rgba(14, 252, 255, 0.9);
-  text-shadow: 0 0 10px rgba(14, 252, 255, 0.6);
+  font-size: 1.2rem;
+  white-space: normal;
 }
 
-/* Loading text */
 .loading-text {
   font-size: 1.5rem;
-  color: #ff4d6d; /* Neon magenta */
+  color: #ff4d6d;
   text-align: center;
   z-index: 2;
 }
 
-/* No Items Available */
 .no-items {
   font-size: 1.2rem;
-  color: #ff4d6d; /* Neon magenta */
+  color: #ff4d6d;
   text-align: center;
   z-index: 2;
+}
+
+.cv-download-section {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cv-button {
+  background-color: #0efcff;
+  color: #1a1a2e;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.cv-button:hover {
+  background-color: #00c8d7;
 }

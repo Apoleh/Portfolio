@@ -50,8 +50,6 @@ const FelixList: React.FC = (): JSX.Element => {
                       onClick={() => handleFelixClick(item.felixId)}
                   >
                     <div className="felix-item-content">
-                      <p className="felix-nationality">Nationality: {item.nationality}</p>
-                      <p className="felix-age">Age: {item.age}</p>
                       <p className="felix-about-me">About Me: {item.aboutMe}</p>
                     </div>
                   </div>
@@ -59,6 +57,14 @@ const FelixList: React.FC = (): JSX.Element => {
           ) : (
               <p className="no-items">No felix items available</p>
           )}
+        </div>
+        <div className="cv-download-section">
+          <a href="/assets/CV.pdf" download className="cv-button">
+            Download CV (English)
+          </a>
+          <a href="/assets/CV(French).pdf" download className="cv-button">
+            Download CV (French)
+          </a>
         </div>
       </div>
   );
