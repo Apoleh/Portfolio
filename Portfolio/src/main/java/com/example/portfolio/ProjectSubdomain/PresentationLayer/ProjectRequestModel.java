@@ -17,4 +17,5 @@ public class ProjectRequestModel {
     String description;
     String imageUrl;
     List<Skill> skills;
+    String projectLink;
 }

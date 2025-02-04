@@ -10,6 +10,7 @@ const AddProjectForm: React.FC = (): JSX.Element => {
   const [projectName, setProjectName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string>('');
+  const [projectLink, setProjectLink] = useState<string>(''); // Added projectLink state
   const [skills, setSkills] = useState<skillResponseModel[]>([]);
   const [selectedSkills, setSelectedSkills] = useState<skillResponseModel[]>([]);
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const AddProjectForm: React.FC = (): JSX.Element => {
       projectName,
       description,
       imageUrl,
+      projectLink, // Included projectLink in request
       skills: selectedSkills,
     };
 
@@ -54,61 +56,76 @@ const AddProjectForm: React.FC = (): JSX.Element => {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1); // This will navigate to the previous page
+  };
+
   return (
-    <div className="add-project-form">
-      <h2>Add New Project</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="projectName">Project Name</label>
-          <input
-            type="text"
-            id="projectName"
-            value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="imageUrl">Image URL</label>
-          <input
-            type="text"
-            id="imageUrl"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Skills</label>
-          <div className="skill-list">
-            {skills.map((skill) => (
-              <span
-                key={skill.skillId}
-                className={`skill-item ${
-                  selectedSkills.find((s) => s.skillId === skill.skillId)
-                    ? 'selected'
-                    : ''
-                }`}
-                onClick={() => handleSkillToggle(skill)}
-              >
-                {skill.skillName}
-              </span>
-            ))}
+    <div className="add-project-form-container">
+      <div className="add-project-form">
+        <h2>Add New Project</h2>
+        <button className="btn btn-back" onClick={handleBack}>Back</button> {/* Back button */}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="projectName">Project Name</label>
+            <input
+              type="text"
+              id="projectName"
+              value={projectName}
+              onChange={(e) => setProjectName(e.target.value)}
+              required
+            />
           </div>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Add Project
-        </button>
-      </form>
+          <div className="form-group">
+            <label htmlFor="description">Description</label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <label htmlFor="imageUrl">Image URL</label>
+            <input
+              type="text"
+              id="imageUrl"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="projectLink">Project Link (GitHub)</label>
+            <input
+              type="text"
+              id="projectLink"
+              value={projectLink}
+              onChange={(e) => setProjectLink(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label>Skills</label>
+            <div className="skill-list">
+              {skills.map((skill) => (
+                <span
+                  key={skill.skillId}
+                  className={`skill-item ${
+                    selectedSkills.find((s) => s.skillId === skill.skillId)
+                      ? 'selected'
+                      : ''
+                  }`}
+                  onClick={() => handleSkillToggle(skill)}
+                >
+                  {skill.skillName}
+                </span>
+              ))}
+            </div>
+          </div>
+          <button type="submit" className="button">
+            Add Project
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

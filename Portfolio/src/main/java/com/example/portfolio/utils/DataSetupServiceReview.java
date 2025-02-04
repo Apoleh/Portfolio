@@ -90,7 +90,9 @@ public class DataSetupServiceReview implements CommandLineRunner {
                         Skill.builder().skillId("skillId3").skillName("React").build(),
                         Skill.builder().skillId("skillId4").skillName("TypeScript").build(),
                         Skill.builder().skillId("skillId5").skillName("MongoDb").build()
-                )
+                ),
+                "https://github.com/Apoleh/Portfolio"
+
         );
 
         Project project2 = buildProject(
@@ -104,7 +106,8 @@ public class DataSetupServiceReview implements CommandLineRunner {
                         Skill.builder().skillId("skillId3").skillName("React").build(),
                         Skill.builder().skillId("skillId4").skillName("TypeScript").build(),
                         Skill.builder().skillId("skillId5").skillName("MongoDb").build()
-                )
+                ),
+                "https://github.com/Sunveerg/Noodle-Star"
         );
 
         Project project3 = buildProject(
@@ -118,7 +121,8 @@ public class DataSetupServiceReview implements CommandLineRunner {
                         Skill.builder().skillId("skillId3").skillName("React").build(),
                         Skill.builder().skillId("skillId4").skillName("TypeScript").build(),
                         Skill.builder().skillId("skillId5").skillName("MongoDb").build()
-                )
+                ),
+                "https://github.com/cgerard321/champlain_petclinic"
         );
 
         Flux.just(project1, project2, project3)
@@ -130,13 +134,14 @@ public class DataSetupServiceReview implements CommandLineRunner {
                 .subscribe();
     }
 
-    private Project buildProject(String projectId, String projectName, String description, String imageUrl, List<Skill> skills) {
+    private Project buildProject(String projectId, String projectName, String description, String imageUrl, List<Skill> skills, String projectLink) {
         return Project.builder()
                 .projectId(projectId)
                 .projectName(projectName)
                 .description(description)
                 .imageUrl(imageUrl)
                 .skills(skills)
+                .projectLink(projectLink)
                 .build();
     }
 

@@ -19,4 +19,5 @@ public class ProjectResponseModel {
      String description;
      String imageUrl;
      List<Skill> skills;
+     String projectLink;
 }

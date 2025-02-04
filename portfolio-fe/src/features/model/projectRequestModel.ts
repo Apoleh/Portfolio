@@ -5,5 +5,6 @@ export interface projectRequestModel {
      description : string;
      imageUrl: string;
      skills : skillResponseModel[];
+     projectLink : string;
   }
   

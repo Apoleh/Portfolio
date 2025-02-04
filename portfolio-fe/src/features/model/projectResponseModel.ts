@@ -12,5 +12,6 @@ export interface projectResponseModel {
      description : string;
      imageUrl: string;
      skills : skillResponseModel[];
+     projectLink : string;
   }
   

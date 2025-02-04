@@ -4,13 +4,14 @@ import { getAllSkills } from './api/getAllSkills';
 import { projectRequestModel } from './model/projectRequestModel';
 import { projectResponseModel, skillResponseModel } from './model/projectResponseModel';
 import { getProject, updateProject } from './api/updateProject';
-import "./UpdateProject.css";
+import './UpdateProject.css';
 
 const UpdateProjectForm: React.FC = (): JSX.Element => {
   const { projectId } = useParams<{ projectId: string }>();
   const [projectName, setProjectName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [imageUrl, setImageUrl] = useState<string>('');
+  const [projectLink, setProjectLink] = useState<string>(''); 
   const [skills, setSkills] = useState<skillResponseModel[]>([]);
   const [selectedSkills, setSelectedSkills] = useState<skillResponseModel[]>([]);
   const navigate = useNavigate();
@@ -20,14 +21,13 @@ const UpdateProjectForm: React.FC = (): JSX.Element => {
       try {
         if (!projectId) return;
 
-        // Fetch project details
         const project: projectResponseModel = await getProject(projectId);
         setProjectName(project.projectName);
         setDescription(project.description);
         setImageUrl(project.imageUrl);
+        setProjectLink(project.projectLink);
         setSelectedSkills(project.skills);
 
-        // Fetch all skills
         const fetchedSkills = await getAllSkills();
         setSkills(fetchedSkills);
       } catch (error) {
@@ -58,6 +58,7 @@ const UpdateProjectForm: React.FC = (): JSX.Element => {
       projectName,
       description,
       imageUrl,
+      projectLink,
       skills: selectedSkills,
     };
 
@@ -71,8 +72,13 @@ const UpdateProjectForm: React.FC = (): JSX.Element => {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1); 
+  };
+
   return (
     <div className="update-project-form">
+      <button className="btn-back" onClick={handleBack}>Back</button>
       <h2>Update Project</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -101,7 +107,15 @@ const UpdateProjectForm: React.FC = (): JSX.Element => {
             id="imageUrl"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="projectLink">Project Link (GitHub)</label>
+          <input
+            type="text"
+            id="projectLink"
+            value={projectLink}
+            onChange={(e) => setProjectLink(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -122,7 +136,7 @@ const UpdateProjectForm: React.FC = (): JSX.Element => {
             ))}
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="button btn">
           Update Project
         </button>
       </form>
