@@ -34,12 +34,8 @@ const ProjectList: React.FC = (): JSX.Element => {
     navigate('/addProject');
   };
 
-  // const handleUpdateProject = (projectId: number): void => {
-  //   navigate(`/updateProject/${projectId}`);
-  // };
-
-  const handleRemoveAllProjects = (): void => {
-    setProjects([]); // Clear all projects
+  const handleProjectClick = (projectId: string): void => { // Change projectId to string
+    navigate(`/project/${projectId}`); // Pass projectId as string
   };
 
   if (loading) {
@@ -47,45 +43,38 @@ const ProjectList: React.FC = (): JSX.Element => {
   }
 
   return (
-      <div className="project-section">
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <h2 className="page-title">Projects</h2>
-          <div>
-            <button className="btn btn-primary me-2" onClick={handleAddProject}>
-              Add
-            </button>
-            <button className="btn btn-danger" onClick={handleRemoveAllProjects}>
-              Remove All
-            </button>
-          </div>
-        </div>
-        <div className="row">
-          {projects.length > 0 ? (
-              projects.map((project) => (
-                  <div className="col-md-6 mb-4" key={project.projectId}>
-                    <div className="card project-card">
-                      <div className="card-body">
-                        <h5 className="project-name">{project.projectName}</h5>
-                        <p className="project-description">{project.description}</p>
-                      </div>
-                      <div className="card-footer">
-                        {project.skills.map((skill) => (
-                            <img
-                                key={skill.skillId}
-                                src={skill.skillLogo}
-                                alt={skill.skillName}
-                                className="skill-logo"
-                            />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-              ))
-          ) : (
-              <p className="no-items">No projects available</p>
-          )}
-        </div>
+    <div className="project-section">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="page-title">Projects</h2>
+        <button className="btn btn-primary" onClick={handleAddProject}>
+          Add Project
+        </button>
       </div>
+      <div className="row">
+        {projects.length > 0 ? (
+          projects.map((project) => (
+            <div className="col-md-4 mb-4" key={project.projectId}>
+              <div
+                className="card project-card"
+                onClick={() => handleProjectClick(project.projectId)} // Use string projectId
+              >
+                <img
+                  src={project.imageUrl}
+                  alt={project.projectName}
+                  className="card-img-top project-image"
+                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                />
+                <div className="project-name-container">
+                  <h5 className="project-name">{project.projectName}</h5>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="no-items">No projects available</p>
+        )}
+      </div>
+    </div>
   );
 };
 

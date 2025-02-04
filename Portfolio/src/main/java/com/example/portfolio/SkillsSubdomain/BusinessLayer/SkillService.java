@@ -6,5 +6,5 @@ import reactor.core.publisher.Flux;
 
 public interface SkillService {
 
-    Flux<SkillResponseModel> getALlSkills();
+    Flux<SkillResponseModel> getAllSkills();
 }

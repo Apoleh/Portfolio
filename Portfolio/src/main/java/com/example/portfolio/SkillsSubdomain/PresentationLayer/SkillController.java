@@ -1,7 +1,6 @@
 package com.example.portfolio.SkillsSubdomain.PresentationLayer;
 
 import com.example.portfolio.SkillsSubdomain.BusinessLayer.SkillService;
-import com.example.portfolio.SkillsSubdomain.DataLayer.Skill;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +22,6 @@ public class SkillController {
 
     @GetMapping()
     public Flux<SkillResponseModel> getAllSkills() {
-        return skillService.getALlSkills();
+        return skillService.getAllSkills();
     }
 }

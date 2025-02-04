@@ -15,6 +15,5 @@ public class Skill {
     private String id;
     private String skillId;
     private String skillName;
-    private String skillLogo;
 
 }

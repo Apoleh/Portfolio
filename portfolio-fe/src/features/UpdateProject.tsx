@@ -106,19 +106,19 @@ const UpdateProjectForm: React.FC = (): JSX.Element => {
         </div>
         <div className="form-group">
           <label>Skills</label>
-          <div className="skill-logos-container">
+          <div className="skill-list">
             {skills.map((skill) => (
-              <img
+              <span
                 key={skill.skillId}
-                src={skill.skillLogo}
-                alt={skill.skillName}
-                className={`skill-logo ${
+                className={`skill-item ${
                   selectedSkills.find((s) => s.skillId === skill.skillId)
                     ? 'selected'
                     : ''
                 }`}
                 onClick={() => handleSkillToggle(skill)}
-              />
+              >
+                {skill.skillName}
+              </span>
             ))}
           </div>
         </div>

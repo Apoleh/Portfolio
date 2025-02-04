@@ -1,7 +1,7 @@
 .project-section {
-  background: radial-gradient(circle, #1a1a2e, #16213e); /* Dark gradient */
-  color: #0efcff; /* Neon cyan text */
-  font-family: 'Press Start 2P', monospace; /* Pixel/arcade font */
+  background: radial-gradient(circle, #1a1a2e, #16213e);
+  color: #0efcff;
+  font-family: 'Press Start 2P', monospace;
   min-height: 100vh;
   padding: 20px;
   display: flex;
@@ -17,13 +17,45 @@
 }
 
 .project-card {
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.5);
   border: 2px solid #0efcff;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
-  padding: 20px;
+  padding: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  position: relative;
+  height: 350px; /* Ensure consistent card height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 70%;
+  object-fit: contain;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.project-name-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
 }
 
 .project-card:hover {
@@ -31,31 +63,9 @@
   box-shadow: 0 0 30px rgba(14, 252, 255, 1);
 }
 
-.project-card .card-footer {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  background: transparent;
-}
-
-.skill-logo {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.8);
-}
-
-.skill-logo:hover {
-  transform: scale(1.2);
-  box-shadow: 0px 10px 25px rgba(0, 255, 255, 1);
-}
-
 .no-items {
   font-size: 1.2rem;
-  color: #ff4d6d; /* Neon magenta */
+  color: #ff4d6d;
   text-align: center;
   text-shadow: 0 0 10px rgba(255, 77, 109, 0.8);
 }

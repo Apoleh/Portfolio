@@ -6,6 +6,7 @@ import ProjectPage from './pages/ProjectPage';
 import AddProjectPage from './pages/AddProjectPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
 import CallbackPage from './pages/CallBackPage';
+import ProjectDetailsPage from './pages/ProjectDetailsPage';
 const router = createBrowserRouter([
   {
     path: PathRoutes.HomePage,
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: PathRoutes.Callback,
     element: <CallbackPage />,
+  },
+  {
+    path: PathRoutes.ProjectDetailsPage,
+    element: <ProjectDetailsPage />,
   },
 ]);
 

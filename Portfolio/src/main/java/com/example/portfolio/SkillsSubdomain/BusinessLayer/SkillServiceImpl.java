@@ -18,7 +18,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public Flux<SkillResponseModel> getALlSkills() {
+    public Flux<SkillResponseModel> getAllSkills() {
         return skillRepository.findAll().map(EntityDTOUtil::toSkillResponseModel);
     }
 }

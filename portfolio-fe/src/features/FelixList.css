@@ -90,3 +90,49 @@
 .cv-button:hover {
   background-color: #00c8d7;
 }
+
+.contact-me-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.contact-me-link {
+  color: #0efcff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px #0efcff;
+}
+
+.contact-me-link:hover {
+  color: #ff4d6d; /* Hover effect */
+  text-shadow: 0 0 15px #ff4d6d;
+}
+
+.skills-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.skills-list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.skill-item {
+  background: #0efcff;
+  color: #1a1a2e;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px rgba(14, 252, 255, 0.7);
+}
+
+.skill-item:hover {
+  background: #ff4d6d;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 77, 109, 1);
+}

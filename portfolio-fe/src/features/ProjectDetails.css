@@ -1,0 +1,81 @@
+.project-details {
+  background: radial-gradient(circle, #1a1a2e, #16213e);
+  color: #0efcff;
+  font-family: 'Press Start 2P', monospace;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Ensure that child elements like the back button are positioned correctly */
+}
+
+.project-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #0efcff;
+  margin-bottom: 20px;
+}
+
+.project-details-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(14, 252, 255, 0.8); /* Adding a nice glow effect */
+}
+
+.project-description {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(14, 252, 255, 0.5);
+}
+
+.skill-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.skill-badge {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  text-shadow: 0 0 10px #0efcff; /* Glow effect for skill badges */
+}
+
+.no-items {
+  font-size: 1.2rem;
+  color: #ff4d6d;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 77, 109, 0.8);
+}
+
+/* Position the back button at the top left */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10; /* Ensure it's above other content */
+  background: #ff4d6d; /* Add a background color for visibility */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease-in-out;
+}
+
+.back-btn:hover {
+  background: #0efcff; /* Change background on hover */
+  color: #1a1a2e;
+  text-shadow: 0 0 10px rgba(14, 252, 255, 0.8);
+}

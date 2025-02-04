@@ -83,13 +83,13 @@ public class DataSetupServiceReview implements CommandLineRunner {
                 "projectId1",
                 "Portfolio Website",
                 "A personal portfolio showcasing my projects, skills, and experience.",
-                "https://i.postimg.cc/mgHqCzWX/image.png",
+                "https://i.postimg.cc/W4hLFW77/image-2025-02-03-221957954.png",
                 List.of(
-                        Skill.builder().skillId("skillId1").skillName("Java").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg").build(),
-                        Skill.builder().skillId("skillId2").skillName("Spring Boot").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg").build(),
-                        Skill.builder().skillId("skillId3").skillName("React").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg").build(),
-                        Skill.builder().skillId("skillId4").skillName("TypeScript").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg").build(),
-                        Skill.builder().skillId("skillId5").skillName("MongoDb").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg").build()
+                        Skill.builder().skillId("skillId1").skillName("Java").build(),
+                        Skill.builder().skillId("skillId2").skillName("Spring Boot").build(),
+                        Skill.builder().skillId("skillId3").skillName("React").build(),
+                        Skill.builder().skillId("skillId4").skillName("TypeScript").build(),
+                        Skill.builder().skillId("skillId5").skillName("MongoDb").build()
                 )
         );
 
@@ -99,48 +99,33 @@ public class DataSetupServiceReview implements CommandLineRunner {
                 "A web site to handle the orders for the restaurant noodle Star",
                 "https://i.postimg.cc/KYhWNGZZ/image.png",
                 List.of(
-                        Skill.builder().skillId("skillId1").skillName("Java").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg").build(),
-                        Skill.builder().skillId("skillId2").skillName("Spring Boot").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg").build(),
-                        Skill.builder().skillId("skillId3").skillName("React").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg").build(),
-                        Skill.builder().skillId("skillId4").skillName("TypeScript").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg").build(),
-                        Skill.builder().skillId("skillId5").skillName("MongoDb").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg").build()
+                        Skill.builder().skillId("skillId1").skillName("Java").build(),
+                        Skill.builder().skillId("skillId2").skillName("Spring Boot").build(),
+                        Skill.builder().skillId("skillId3").skillName("React").build(),
+                        Skill.builder().skillId("skillId4").skillName("TypeScript").build(),
+                        Skill.builder().skillId("skillId5").skillName("MongoDb").build()
                 )
         );
 
         Project project3 = buildProject(
                 "projectId3",
-                "Football Heritage",
-                "First full Stack project abour football",
-                "https://i.postimg.cc/gcgfWbKD/image.png",
+                "Champlain Pet Clinic",
+                "A web site to handle champlain's pet clinic",
+                "",
                 List.of(
-                        Skill.builder().skillId("skillId1").skillName("Java").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg").build(),
-                        Skill.builder().skillId("skillId2").skillName("Spring Boot").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg").build(),
-                        Skill.builder().skillId("skillId3").skillName("React").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg").build(),
-                        Skill.builder().skillId("skillId4").skillName("Javascript").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg").build(),
-                        Skill.builder().skillId("skillId5").skillName("Mysql").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg").build()
+                        Skill.builder().skillId("skillId1").skillName("Java").build(),
+                        Skill.builder().skillId("skillId2").skillName("Spring Boot").build(),
+                        Skill.builder().skillId("skillId3").skillName("React").build(),
+                        Skill.builder().skillId("skillId4").skillName("TypeScript").build(),
+                        Skill.builder().skillId("skillId5").skillName("MongoDb").build()
                 )
         );
 
-        Project project4 = buildProject(
-                "projectId4",
-                "Artwork Project",
-                ".Net project that handle the sell of artworks",
-                "https://i.postimg.cc/LhdbJN79/image.png",
-                List.of(
-                        Skill.builder().skillId("skillId1").skillName(".net").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-plain.svg").build(),
-                        Skill.builder().skillId("skillId2").skillName("csHtml").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg").build(),
-                        Skill.builder().skillId("skillId3").skillName("Azure").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg").build(),
-                        Skill.builder().skillId("skillId4").skillName("C#").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg").build(),
-                        Skill.builder().skillId("skillId5").skillName("Mysql").skillLogo("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg").build()
-                )
-        );
-
-        Flux.just(project1, project2, project3, project4)
+        Flux.just(project1, project2, project3)
                 .flatMap(project -> projectRepo.findByProjectId(project.getProjectId())
-                        .switchIfEmpty(Mono.defer(() -> {
-                            System.out.println("Inserting project: " + project.getProjectId());
-                            return projectRepo.save(project);
-                        }))
+                        .flatMap(existingProject -> projectRepo.delete(existingProject).thenReturn(project)) // Delete the old project
+                        .switchIfEmpty(Mono.just(project)) // If no existing project, proceed with saving
+                        .flatMap(projectRepo::save) // Save the new project
                 )
                 .subscribe();
     }
@@ -160,23 +145,23 @@ public class DataSetupServiceReview implements CommandLineRunner {
 
     //skill
     private void setupSkills() {
-        Skill java = buildSkill("skillId1", "Java", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg");
-        Skill springBoot = buildSkill("skillId2", "Spring Boot", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg");
-        Skill react = buildSkill("skillId3", "React", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg");
-        Skill typescript = buildSkill("skillId4", "TypeScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg");
-        Skill mongodb = buildSkill("skillId5", "MongoDb", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg");
-        Skill javascript = buildSkill("skillId6", "JavaScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@");
-        Skill mysql = buildSkill("skillId7", "Mysql", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg");
-        Skill dotnet = buildSkill("skillId8", ".Net", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-plain.svg");
-        Skill cshtml = buildSkill("skillId9", "csHtml", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg");
-        Skill azure = buildSkill("skillId10", "Azure", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg");
-        Skill csharp = buildSkill("skillId11", "C#", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg");
-        Skill python= buildSkill("skillId12", "Python", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg");
-        Skill untiy= buildSkill("skillId13", "Unity", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg");
-        Skill C= buildSkill("skillId14", "C++", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg");
-        Skill android= buildSkill("skillId15", "Android", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg");
+        Skill java = buildSkill("skillId1", "Java");
+        Skill springBoot = buildSkill("skillId2", "Spring Boot");
+        Skill react = buildSkill("skillId3", "React");
+        Skill typescript = buildSkill("skillId4", "TypeScript");
+        Skill mongodb = buildSkill("skillId5", "MongoDb");
+        Skill javascript = buildSkill("skillId6", "JavaScript");
+        Skill mysql = buildSkill("skillId7", "Mysql");
+        Skill dotnet = buildSkill("skillId8", ".Net");
+        Skill cshtml = buildSkill("skillId9", "csHtml");
+        Skill azure = buildSkill("skillId10", "Azure");
+        Skill csharp = buildSkill("skillId11", "C#");
+        Skill python= buildSkill("skillId12", "Python");
+        Skill unity = buildSkill("skillId13", "Unity");
+        Skill C = buildSkill("skillId14", "C++");
+        Skill android= buildSkill("skillId15", "Android");
 
-        Flux.just(java, springBoot, react, typescript, mongodb, javascript, mysql, dotnet, cshtml, azure, csharp, python, untiy, C, android)
+        Flux.just(java, springBoot, react, typescript, mongodb, javascript, mysql, dotnet, cshtml, azure, csharp, python, unity, C, android)
                 .flatMap(skill -> skillRepo.findSkillById(skill.getSkillId())
                         .switchIfEmpty(Mono.defer(() -> {
                             System.out.println("Inserting skill: " + skill.getSkillId());
@@ -186,11 +171,10 @@ public class DataSetupServiceReview implements CommandLineRunner {
                 .subscribe();
     }
 
-    private Skill buildSkill(String skillId, String skillName, String skillLogo) {
+    private Skill buildSkill(String skillId, String skillName) {
         return Skill.builder()
                 .skillId(skillId)
                 .skillName(skillName)
-                .skillLogo(skillLogo)
                 .build();
     }
 

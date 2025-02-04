@@ -1,14 +1,13 @@
 export interface skillResponseModel {
-    skillId: number;
+    skillId: string;
     skillName: string;
-    skillLogo: string;
   }
   
 
 
 
 export interface projectResponseModel {
-    projectId: number;
+    projectId: string;
      projectName : string;
      description : string;
      imageUrl: string;
