@@ -15,13 +15,13 @@ export const NavBar: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleLoginRedirect = () => {
     setLoading(true);
-    const audience = 'https://dev-5kbvxb8zgblo1by3.us.auth0.com/api/v2/';
+    const audience = 'https://dev-q4qzodi6wpd1thnb.us.auth0.com/api/v2/';
     const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_AUTH0_CALLBACK_URL;
 
     // Redirect the user to the Auth0 Universal Login page
     window.location.href =
-      `https://dev-5kbvxb8zgblo1by3.us.auth0.com/authorize?` +
+      `https://dev-q4qzodi6wpd1thnb.us.auth0.com/authorize?` +
       `response_type=token&` +
       `client_id=${clientId}&` + // Your Auth0 Client ID
       `redirect_uri=${redirectUri}&` + // The redirect URL after login

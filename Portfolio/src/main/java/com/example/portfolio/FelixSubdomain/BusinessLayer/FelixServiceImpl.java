@@ -19,6 +19,6 @@ public class FelixServiceImpl implements FelixService {
 
     @Override
     public Flux<FelixResponseModel> getAllFelix() {
-        return felixRepository.findAll().map(EntityDTOUtil::toZakoResponseDTO);
+        return felixRepository.findAll().map(EntityDTOUtil::toFelixResponseDTO);
     }
 }

@@ -6,6 +6,8 @@ import com.example.portfolio.ProjectSubdomain.DataLayer.Project;
 import com.example.portfolio.ProjectSubdomain.DataLayer.ProjectRepository;
 import com.example.portfolio.SkillsSubdomain.DataLayer.Skill;
 import com.example.portfolio.SkillsSubdomain.DataLayer.SkillRepository;
+import com.example.portfolio.UserSubdomain.DataLayer.User;
+import com.example.portfolio.UserSubdomain.DataLayer.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
@@ -24,12 +26,14 @@ public class DataSetupServiceReview implements CommandLineRunner {
     private final FelixRepository felixRepository;
     private final ProjectRepository projectRepo;
     private  final SkillRepository skillRepo;
+    private final UserRepository userRepo;
 
     @Override
     public void run(String... args) throws Exception {
         setupFelix();
         setupProjects();
         setupSkills();
+        setupUsers();
     }
 
     private void setupFelix() {
@@ -187,6 +191,37 @@ public class DataSetupServiceReview implements CommandLineRunner {
                 .skillId(skillId)
                 .skillName(skillName)
                 .skillLogo(skillLogo)
+                .build();
+    }
+
+    private void setupUsers() {
+        User user3 = buildUser("userId3", "leopold@example.com", "Leopold", "Miller", List.of("Customer"), null);
+        User user4 = buildUser("userId4", "samuel@example.com", "Samuel", "Taylor", List.of("Staff"), null);
+        User user5 = buildUser("userId5", "samantha@example.com", "Samantha", "Lee", List.of("Customer"), List.of("read"));
+        Flux.just( user3, user4, user5)
+                .flatMap(user -> {
+                    System.out.println("Checking if user exists: " + user.getUserId());
+
+                    // Check if the user already exists by userId (or email)
+                    return userRepo.findByUserId(user.getUserId()) // Assuming userId is the unique identifier
+                            .doOnTerminate(() -> System.out.println("Terminated: " + user.getUserId()))
+                            .switchIfEmpty(Mono.defer(() -> {
+                                System.out.println("Inserting user: " + user.getUserId());
+                                return userRepo.save(user); // Save if user doesn't exist
+                            }));
+                })
+                .subscribe();
+    }
+
+
+    private User buildUser(String userId, String email, String firstName, String lastName, List<String> roles, List<String> permissions) {
+        return User.builder()
+                .userId(userId)
+                .email(email)
+                .firstName(firstName)
+                .lastName(lastName)
+                .roles(roles)
+                .permissions(permissions)
                 .build();
     }
 }

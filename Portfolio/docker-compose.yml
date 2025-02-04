@@ -7,21 +7,23 @@ services:
       - "8888:8888"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - AUTH0_CLIENT_ID=JncbjLl2fAHFHpeE1vYoJRBVgBaXf1NH
+      - AUTH0_CLIENT_SECRET=17JFumD293z5CY3X2fQ95MwGwKNod8QGHQTA12moDm1i6z-gXX4cFUo4gloqar-S
     depends_on:
       - mongodb
 
-  portfolioFrontend:
-    image: portfolio-fe
-    container_name: portfolio-fe
-    build:
-      context: ../portfolio-fe
-      dockerfile: Dockerfile
-      args:
-        - BUILD_MODE=development
-    ports:
-      - "3000:3000"
-    volumes:
-      - ../portfolio-fe/src:/app/src
+#  portfolioFrontend:
+#    image: portfolio-fe
+#    container_name: portfolio-fe
+#    build:
+#      context: ../portfolio-fe
+#      dockerfile: Dockerfile
+#      args:
+#        - BUILD_MODE=development
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - ../portfolio-fe/src:/app/src
 
 
   mongodb:

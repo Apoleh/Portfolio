@@ -5,6 +5,7 @@ import FelixPage from './pages/FelixPage';
 import ProjectPage from './pages/ProjectPage';
 import AddProjectPage from './pages/AddProjectPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
+import CallbackPage from './pages/CallBackPage';
 const router = createBrowserRouter([
   {
     path: PathRoutes.HomePage,
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: PathRoutes.UpdateProjectPage,
     element: <UpdateProjectPage />,
+  },
+  {
+    path: PathRoutes.Callback,
+    element: <CallbackPage />,
   },
 ]);
 
