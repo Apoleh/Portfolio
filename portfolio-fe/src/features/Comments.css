@@ -1,0 +1,111 @@
+.top-section {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    color: #0efcff;
+    font-family: 'Press Start 2P', monospace;
+}
+
+/* Grid layout for comments */
+.comment-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Increase min width of the boxes */
+    gap: 1.5rem; /* Increase the gap between the boxes */
+    padding: 1.5rem; /* Increased padding for spacing */
+}
+
+/* Comment item card */
+.comment-item {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #0efcff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
+    padding: 2rem; /* Increased padding to make the box bigger */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    min-height: 200px; /* Increased height for a more elongated look */
+}
+
+.comment-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(14, 252, 255, 0.9);
+}
+
+/* Distinction for unapproved comments */
+.comment-item.unapproved {
+    background: rgba(255, 77, 109, 0.2);
+    border: 2px solid #ff4d6d;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.8);
+}
+
+.comment-item.unapproved:hover {
+    box-shadow: 0 0 30px rgba(255, 77, 109, 0.9);
+}
+
+/* Styling for comment information */
+.comment-content {
+    font-size: 1.2rem; /* Increased font size for readability */
+    color: #ddd;
+    margin-bottom: 1rem; /* Added more space between content and author */
+}
+
+.comment-author {
+    font-size: 1rem; /* Increased font size for author */
+    font-weight: bold;
+    color: #0efcff;
+}
+
+/* No Items Message */
+.no-items {
+    font-size: 1.2rem;
+    color: #ff4d6d;
+    margin-top: 2rem;
+}
+
+/* Loading Message */
+.loading-items {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff4d6d;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-section {
+        padding: 1rem;
+    }
+
+    .comment-item {
+        padding: 1.5rem; /* Adjusted padding for smaller screens */
+        min-height: 180px; /* Adjusted height for smaller screens */
+    }
+
+    .comment-content {
+        font-size: 1rem; /* Adjusted font size for smaller screens */
+    }
+}
+
+.comment-button {
+    background: #0efcff;
+    color: #1a1a2e;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #0efcff;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(14, 252, 255, 0.7);
+}
+
+.comment-button:hover {
+    background: #ff4d6d;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 1);
+}

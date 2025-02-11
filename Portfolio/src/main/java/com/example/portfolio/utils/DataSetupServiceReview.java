@@ -1,5 +1,7 @@
 package com.example.portfolio.utils;
 
+import com.example.portfolio.CommentsSubdomain.DataLayer.Comment;
+import com.example.portfolio.CommentsSubdomain.DataLayer.CommentRepository;
 import com.example.portfolio.FelixSubdomain.DataLayer.Felix;
 import com.example.portfolio.FelixSubdomain.DataLayer.FelixRepository;
 import com.example.portfolio.ProjectSubdomain.DataLayer.Project;
@@ -16,6 +18,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -27,6 +30,7 @@ public class DataSetupServiceReview implements CommandLineRunner {
     private final ProjectRepository projectRepo;
     private  final SkillRepository skillRepo;
     private final UserRepository userRepo;
+    private final CommentRepository commentRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -34,6 +38,7 @@ public class DataSetupServiceReview implements CommandLineRunner {
         setupProjects();
         setupSkills();
         setupUsers();
+        setUpComments();
     }
 
     private void setupFelix() {
@@ -211,6 +216,35 @@ public class DataSetupServiceReview implements CommandLineRunner {
                 .lastName(lastName)
                 .roles(roles)
                 .permissions(permissions)
+                .build();
+    }
+
+    private void setUpComments(){
+        Comment comment1 = buildComment("commentId1", "John Doe", LocalDate.now(), "Wow!");
+        Comment comment2 = buildComment("commentId2", "Jane Dane", LocalDate.now(), "Cool!");
+        Comment comment3 = buildComment("commentId3", "Felix Zhang", LocalDate.now(), "Nice!");
+
+        Flux.just(comment1, comment2, comment3)
+                .flatMap(comment -> {
+                    System.out.println("Checking if comment exists: " + comment.getCommentId());
+
+                    return commentRepository.findCommentByCommentId(comment.getCommentId())
+                            .doOnTerminate(() -> System.out.println("Terminated: " + comment.getCommentId()))
+                            .switchIfEmpty(Mono.defer(() -> {
+                                System.out.println("Inserting comment: " + comment.getCommentId());
+                                return commentRepository.save(comment);
+                            }));
+                })
+                .subscribe();
+    }
+
+    private Comment buildComment(String commentId, String author, LocalDate date, String comment) {
+        return Comment.builder()
+                .commentId(commentId)
+                .author(author)
+                .date(date)
+                .comment(comment)
+                .isApproved(false)
                 .build();
     }
 }

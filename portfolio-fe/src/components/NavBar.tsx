@@ -7,6 +7,7 @@ const navigationItems = [
   { label: 'Home', path: PathRoutes.HomePage },
   { label: 'Felix', path: '/felix' },
   { label: 'Projects', path: '/project' },
+  { label: 'Comments', path: '/comments' },
 ];
 
 export const NavBar: React.FC = () => {

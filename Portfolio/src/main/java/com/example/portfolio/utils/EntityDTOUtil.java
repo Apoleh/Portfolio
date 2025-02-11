@@ -1,6 +1,9 @@
 package com.example.portfolio.utils;
 
 
+import com.example.portfolio.CommentsSubdomain.DataLayer.Comment;
+import com.example.portfolio.CommentsSubdomain.PresentationLayer.CommentRequestModel;
+import com.example.portfolio.CommentsSubdomain.PresentationLayer.CommentResponseModel;
 import com.example.portfolio.FelixSubdomain.DataLayer.Felix;
 import com.example.portfolio.FelixSubdomain.PresentationLayer.FelixResponseModel;
 import com.example.portfolio.ProjectSubdomain.DataLayer.Project;
@@ -62,8 +65,27 @@ public class EntityDTOUtil {
         return model;
     }
 
-
     public static String generateOrderIdString() {
+        return UUID.randomUUID().toString();
+    }
+
+    public static CommentResponseModel toCommentResponseDTO(Comment comment) {
+        CommentResponseModel commentResponseModel = new CommentResponseModel();
+        BeanUtils.copyProperties(comment, commentResponseModel);
+        return commentResponseModel;
+    }
+
+    public static Comment toCommentEntity(CommentRequestModel commentRequestModel) {
+        return Comment.builder()
+                .commentId(generateCommentIdString())
+                .author(commentRequestModel.getAuthor())
+                .date(commentRequestModel.getDate())
+                .comment(commentRequestModel.getComment())
+                .isApproved(commentRequestModel.isApproved())
+                .build();
+    }
+
+    private static String generateCommentIdString() {
         return UUID.randomUUID().toString();
     }
 }

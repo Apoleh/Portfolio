@@ -7,6 +7,8 @@ import AddProjectPage from './pages/AddProjectPage';
 import UpdateProjectPage from './pages/UpdateProjectPage';
 import CallbackPage from './pages/CallBackPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
+import CommentsPage from './pages/CommentsPage';
+import AddCommentsPage from './pages/AddCommentsPage';
 const router = createBrowserRouter([
   {
     path: PathRoutes.HomePage,
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
   {
     path: PathRoutes.ProjectDetailsPage,
     element: <ProjectDetailsPage />,
+  },
+  {
+    path: PathRoutes.CommentsPage,
+    element: <CommentsPage />,
+  },
+  {
+    path: PathRoutes.AddCommentsPage,
+    element: <AddCommentsPage />,
   },
 ]);
 
