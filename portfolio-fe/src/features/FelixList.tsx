@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { felixResponseModel } from './model/felixResponseModel';
 import { getAllFelix } from './api/getAllFelix';
-import { getAllSkills } from './api/getAllSkills';  // Import the getAllSkills function
+import { getAllSkills } from './api/getAllSkills';
 import './FelixList.css';
 
 const FelixList: React.FC = (): JSX.Element => {
   const [felixItems, setFelixItems] = useState<felixResponseModel[]>([]);
-  const [skills, setSkills] = useState<string[]>([]);  // State to store skills
+  const [skills, setSkills] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ const FelixList: React.FC = (): JSX.Element => {
 
         // Fetch skills data
         const skillsResponse = await getAllSkills();
-        setSkills(skillsResponse.map(skill => skill.skillName));  // Access 'skillName' from the fetched skills
+        setSkills(skillsResponse.map(skill => skill.skillName));
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -45,23 +45,24 @@ const FelixList: React.FC = (): JSX.Element => {
   }
 
   return (
+    <>
       <div className="felix-section">
         <h2 className="page-title">Felix</h2>
         <div className="felix-list">
           {felixItems.length > 0 ? (
-              felixItems.map(item => (
-                  <div
-                      className="felix-item"
-                      key={item.felixId}
-                      onClick={() => handleFelixClick(item.felixId)}
-                  >
-                    <div className="felix-item-content">
-                      <p className="felix-about-me">About Me: {item.aboutMe}</p>
-                    </div>
-                  </div>
-              ))
+            felixItems.map(item => (
+              <div
+                className="felix-item"
+                key={item.felixId}
+                onClick={() => handleFelixClick(item.felixId)}
+              >
+                <div className="felix-item-content">
+                  <p className="felix-about-me">About Me: {item.aboutMe}</p>
+                </div>
+              </div>
+            ))
           ) : (
-              <p className="no-items">No felix items available</p>
+            <p className="no-items">No felix items available</p>
           )}
         </div>
 
@@ -80,21 +81,8 @@ const FelixList: React.FC = (): JSX.Element => {
             )}
           </div>
         </div>
-
-        <div className="cv-download-section">
-          <a href="/assets/CV.pdf" download className="cv-button">
-            Download CV (English)
-          </a>
-          <a href="/assets/CV(French).pdf" download className="cv-button">
-            Download CV (French)
-          </a>
-        </div>
-
-        {/* Contact Me Section */}
-        <div className="contact-me-section">
-          <p>Feel free to reach out! <a href="mailto:2231308@champlaincollege.qc.ca" className="contact-me-link">Contact Me</a></p>
-        </div>
       </div>
+    </>
   );
 };
 

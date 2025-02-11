@@ -35,7 +35,7 @@
 
 .update-btn {
   position: absolute;
-  top: 20px;
+  top: 20px; /* Keep the update button at the top */
   right: 20px;
   z-index: 1;
   background: #0efcff;
@@ -104,4 +104,32 @@
   background: #0efcff;
   color: #1a1a2e;
   text-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
+}
+
+.delete-btn {
+  position: absolute;
+  top: 70px; /* Position it below the update button */
+  right: 20px;
+  z-index: 1;
+  background: #ff4d6d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+  background: #dc3545;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+}
+
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }

@@ -161,17 +161,17 @@ public class DataSetupServiceReview implements CommandLineRunner {
         Skill cshtml = buildSkill("skillId9", "csHtml");
         Skill azure = buildSkill("skillId10", "Azure");
         Skill csharp = buildSkill("skillId11", "C#");
-        Skill python= buildSkill("skillId12", "Python");
+        Skill python = buildSkill("skillId12", "Python");
         Skill unity = buildSkill("skillId13", "Unity");
         Skill C = buildSkill("skillId14", "C++");
-        Skill android= buildSkill("skillId15", "Android");
+        Skill android = buildSkill("skillId15", "Android");
 
         Flux.just(java, springBoot, react, typescript, mongodb, javascript, mysql, dotnet, cshtml, azure, csharp, python, unity, C, android)
-                .flatMap(skill -> skillRepo.findSkillById(skill.getSkillId())
-                        .switchIfEmpty(Mono.defer(() -> {
-                            System.out.println("Inserting skill: " + skill.getSkillId());
-                            return skillRepo.save(skill);
-                        }))
+                .flatMap(skill -> skillRepo.findSkillById(skill.getSkillId())  // Find if skill already exists
+                        .flatMap(existingSkill -> skillRepo.delete(existingSkill)  // Delete existing skill if found
+                                .thenReturn(skill))  // Return the current skill to save
+                        .switchIfEmpty(Mono.just(skill))  // If skill doesn't exist, proceed to save the new skill
+                        .flatMap(skillRepo::save)  // Save the new skill
                 )
                 .subscribe();
     }

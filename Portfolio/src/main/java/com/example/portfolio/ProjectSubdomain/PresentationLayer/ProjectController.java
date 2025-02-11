@@ -37,4 +37,9 @@ public class ProjectController {
     Mono<ProjectResponseModel> getProjectById(@PathVariable String projectId) {
         return projectService.GetProject(projectId);
     }
+
+    @DeleteMapping("/{projectId}")
+    Mono<Void> deleteProject(@PathVariable String projectId) {
+        return projectService.DeleteProject(projectId);
+    }
 }

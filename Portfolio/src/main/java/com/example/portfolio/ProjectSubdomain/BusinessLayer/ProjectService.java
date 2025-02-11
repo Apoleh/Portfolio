@@ -13,4 +13,6 @@ public interface ProjectService {
     Mono<ProjectResponseModel> EditProject(Mono<ProjectRequestModel> projectRequestModel, String projectId);
 
     Mono<ProjectResponseModel> GetProject(String projectId);
+
+    Mono<Void> DeleteProject(String projectId);
 }

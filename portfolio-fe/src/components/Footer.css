@@ -1,0 +1,56 @@
+/* Footer Styling */
+.footer {
+    background: #1a1a2e; /* Dark background */
+    color: #0efcff; /* Neon cyan text */
+    font-family: 'Press Start 2P', monospace; /* Pixel/arcade font */
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 3px solid #ff4d6d; /* Magenta border for separation */
+    text-shadow: 0 0 10px rgba(14, 252, 255, 0.6);
+}
+
+/* CV Download Section */
+.cv-download {
+    margin-bottom: 15px;
+}
+
+.cv-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #ff4d6d, #0efcff); /* Gradient like navbar button */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.cv-button:hover {
+    box-shadow: 0 0 20px rgba(14, 252, 255, 0.8);
+    transform: scale(1.1);
+}
+
+/* Contact Me Section */
+.contact-me {
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.contact-link {
+    color: #ff4d6d; /* Neon magenta */
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-link:hover {
+    color: #0efcff; /* Swap to neon cyan */
+    text-shadow: 0 0 20px rgba(14, 252, 255, 1);
+}
