@@ -87,6 +87,7 @@ public class SecurityConfig {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.addAllowedOrigin("http://localhost:3000");
         corsConfig.addAllowedOrigin("https://dev-q4qzodi6wpd1thnb.us.auth0.com/");
+        corsConfig.addAllowedOrigin("https://portfolio-fe-app-aqt9o.ondigitalocean.app/");
         corsConfig.addAllowedHeader("*");
         corsConfig.addAllowedMethod("*");
         corsConfig.setAllowCredentials(true);
