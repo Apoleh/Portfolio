@@ -11,7 +11,7 @@ logging:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://doadmin:6xqK7R4p8g520Po1@portfolio-database-155d2bc1.mongo.ondigitalocean.com/admin?retryWrites=true&w=majority
+      uri: mongodb+srv://doadmin:c90y8jJY54Me673i@portfolio-database-4ca3728e.mongo.ondigitalocean.com/admin?tls=true&authSource=admin
       authentication-database: admin
       auto-index-creation: true
 de:
