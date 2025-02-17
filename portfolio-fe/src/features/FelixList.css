@@ -2,14 +2,14 @@
   background: radial-gradient(circle, #1a1a2e, #16213e);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Align content at the top */
   align-items: center;
   color: #0efcff;
   font-family: 'Press Start 2P', monospace;
-  height: 100vh;
-  position: relative;
+  min-height: 100vh; /* Ensure it takes full viewport height */
   padding: 20px;
   width: 100%;
+  box-sizing: border-box; /* Include padding in the height calculation */
 }
 
 .felix-list {
@@ -37,9 +37,10 @@
   box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
   backdrop-filter: blur(5px);
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.1rem;
   position: relative;
   transition: box-shadow 0.3s ease;
+  margin-bottom: 20px; /* Added margin for spacing between items */
 }
 
 .felix-item:hover {
@@ -55,6 +56,8 @@
 .felix-about-me {
   font-size: 1.2rem;
   white-space: normal;
+  line-height: 1.6; /* Improve readability */
+  padding: 10px 0; /* Added padding for spacing */
 }
 
 .loading-text {
@@ -112,6 +115,9 @@
 .skills-section {
   margin-top: 40px;
   text-align: center;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
 .skills-list {
@@ -123,16 +129,43 @@
 }
 
 .skill-item {
-  background: #0efcff;
+  background: linear-gradient(145deg, #0efcff, #00c8d7);
   color: #1a1a2e;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 1.1rem;
-  text-shadow: 0 0 5px rgba(14, 252, 255, 0.7);
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 4px 4px 10px rgba(14, 252, 255, 0.3), -4px -4px 10px rgba(0, 200, 215, 0.3);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 200px;
+  text-align: center;
+  margin: 5px;
+  height: 45px;
+  gap: 8px;
+}
+
+.skill-item i {
+  margin-right: 10px; /* Space between icon and text */
+  font-size: 1.4rem;
 }
 
 .skill-item:hover {
-  background: #ff4d6d;
-  color: white;
-  box-shadow: 0 0 10px rgba(255, 77, 109, 1);
+  background: linear-gradient(145deg, #00c8d7, #0efcff);
+  box-shadow: 4px 4px 15px rgba(14, 252, 255, 0.5), -4px -4px 15px rgba(0, 200, 215, 0.5);
+  transform: translateY(-5px);
 }
+
+.skill-item:active {
+  transform: translateY(2px); /* Slight effect when clicking */
+}
+
+.skill-item span {
+  font-size: 1rem;
+  color: #1a1a2e;
+}
+

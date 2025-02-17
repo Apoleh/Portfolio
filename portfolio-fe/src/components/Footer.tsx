@@ -6,10 +6,10 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="cv-download">
         <a href="/assets/CV.pdf" download className="cv-button">
-          Download CV (English)
+          Download CV (EN)
         </a>
         <a href="/assets/CV(French).pdf" download className="cv-button">
-          Download CV (French)
+          Download CV (FR)
         </a>
       </div>
 
@@ -20,6 +20,10 @@ const Footer: React.FC = () => {
             Contact Me
           </a>
         </p>
+      </div>
+
+      <div className="copyright">
+        <p>&copy; 2025 Felix Zhang | All Rights Reserved</p>
       </div>
     </footer>
   );

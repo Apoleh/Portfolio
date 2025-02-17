@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { commentResponseModel } from './model/commentResponseModel';
 import { getApprovedComments, getUnapprovedComments, approveComment } from './api/getComments';
+import { deleteComment } from './api/deleteComment';
 import './Comments.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,32 +23,11 @@ const Comments: React.FC = (): JSX.Element => {
             }
 
             try {
-                // Decode token payload
                 const base64Url = accessToken.split('.')[1];
                 const decodedPayload = JSON.parse(atob(base64Url));
 
-                console.log('Decoded JWT Payload:', decodedPayload); // Debugging
-
-                // Extract roles from token (adjust the key to match your Auth0 setup)
                 const roles: string[] = decodedPayload['https://portfolio/roles'] || [];
-                console.log('Extracted Roles:', roles); // Debugging
-
-                setIsFelix(roles.includes('Felix')); // Changed from 'Admin' to 'Felix'
-
-                const response = await fetch(
-                    'https://dev-bwwn1gqnz1pbm8ay.us.auth0.com/userinfo',
-                    {
-                        method: 'GET',
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user info');
-                }
-
+                setIsFelix(roles.includes('Felix'));
             } catch (err) {
                 console.error('Error fetching user info:', err);
             }
@@ -80,18 +60,26 @@ const Comments: React.FC = (): JSX.Element => {
     const handleApprove = async (commentId: string) => {
         try {
             await approveComment(commentId);
-
-            // Remove the approved comment from unapproved list and add it to approved list
-            setUnapprovedComments(prevComments =>
-                prevComments.filter(comment => comment.commentId !== commentId)
-            );
-
+            setUnapprovedComments(prevComments => prevComments.filter(comment => comment.commentId !== commentId));
             const approvedComment = unapprovedComments.find(comment => comment.commentId === commentId);
             if (approvedComment) {
                 setApprovedComments(prevComments => [...prevComments, approvedComment]);
             }
         } catch (error) {
             console.error('Error approving comment:', error);
+        }
+    };
+
+    const handleDelete = async (commentId: string) => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this comment?');
+        if (!confirmDelete) return;
+
+        try {
+            await deleteComment(commentId);
+            setApprovedComments(prevComments => prevComments.filter(comment => comment.commentId !== commentId));
+            setUnapprovedComments(prevComments => prevComments.filter(comment => comment.commentId !== commentId));
+        } catch (error) {
+            console.error('Error deleting comment:', error);
         }
     };
 
@@ -108,6 +96,11 @@ const Comments: React.FC = (): JSX.Element => {
                         <div className="comment-item" key={comment.commentId}>
                             <p className="comment-author"><b>Name:</b> {comment.author}</p>
                             <p className="comment-content"><b>Comment:</b> {comment.comment}</p>
+                            {isFelix && (
+                                <button onClick={() => handleDelete(comment.commentId)} className="delete-button">
+                                    Delete
+                                </button>
+                            )}
                         </div>
                     ))
                 ) : (
@@ -127,6 +120,11 @@ const Comments: React.FC = (): JSX.Element => {
                                     <button onClick={() => handleApprove(comment.commentId)} className="approve-button">
                                         Approve
                                     </button>
+                                    {isFelix && (
+                                        <button onClick={() => handleDelete(comment.commentId)} className="delete-button">
+                                            Delete
+                                        </button>
+                                    )}
                                 </div>
                             ))
                         ) : (

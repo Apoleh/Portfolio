@@ -51,12 +51,13 @@
     display: block;
 }
 
+
 /* Welcome Text */
 .welcomeText {
     z-index: 2;
     text-align: left; /* Align text to the left */
     align-self: flex-start; /* Position it to the left */
-    margin-left: 50px; /* Add some margin for spacing */
+    margin-left: 100px; /* Add some margin for spacing */
 }
 
 h4 {
@@ -100,4 +101,33 @@ h1 {
 .welcomeText .button:hover {
     box-shadow: 0 0 20px rgba(14, 252, 255, 0.8);
     transform: scale(1.1);
+}
+
+.felixImage {
+    position: absolute;
+    right: 25%; /* Move the image more towards the center */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 450px; /* Make the image larger */
+    height: 400px; /* Keep the height equal to width */
+    border-radius: 50%;
+    border: 5px solid #0efcff;
+    box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
+    animation: glowingBorder 2s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes glowingBorder {
+    0% {
+        border-color: #0efcff;
+        box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
+    }
+    50% {
+        border-color: #ff4d6d;
+        box-shadow: 0 0 25px rgba(255, 77, 109, 0.8);
+    }
+    100% {
+        border-color: #0efcff;
+        box-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
+    }
 }

@@ -9,7 +9,7 @@ const ProjectList: React.FC = (): JSX.Element => {
   const [projects, setProjects] = useState<projectResponseModel[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [isOwner, setIsOwner] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null); // New state for error handling
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,7 +17,6 @@ const ProjectList: React.FC = (): JSX.Element => {
       try {
         setLoading(true);
         const response = await getAllProjects();
-        console.log('Fetched response:', response); // Log response to verify the data
         if (Array.isArray(response)) {
           setProjects(response);
         } else {
@@ -34,32 +33,25 @@ const ProjectList: React.FC = (): JSX.Element => {
 
     fetchProjectData();
 
-    // Extract role from access token
+    // Check for access token but allow page to load without it
     const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-      console.error('No access token found');
-      setError('No access token found');
-    } else {
-      const base64Url = accessToken.split('.')[1];
+    if (accessToken) {
       try {
+        const base64Url = accessToken.split('.')[1];
         const decodedPayload = JSON.parse(atob(base64Url));
-        console.log('Decoded payload:', decodedPayload); // Log decoded payload to verify
         const roles = decodedPayload['https://portfolio/roles'] || [];
-        setIsOwner(roles.includes('Felix')); // Changed from 'Owner' to 'Felix'
+        setIsOwner(roles.includes('Felix'));
       } catch (e) {
         console.error('Error decoding token:', e);
-        setError('Error decoding token');
       }
     }
   }, []);
 
   const handleAddProject = (): void => {
-    console.log('Navigating to add project page');
     navigate('/addProject');
   };
 
   const handleProjectClick = (projectId: string): void => {
-    console.log('Navigating to project:', projectId); // Log project click
     navigate(`/project/${projectId}`);
   };
 

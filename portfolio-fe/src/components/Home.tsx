@@ -70,6 +70,9 @@ export const Home: React.FC = () => {
             Enter Portfolio
           </button>
         </div>
+
+        {/* Add Felix's picture */}
+        <img src="/assets/Felix.png" alt="Felix" className="felixImage" />
       </main>
   );
 };

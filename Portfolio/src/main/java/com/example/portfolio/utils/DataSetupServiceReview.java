@@ -119,7 +119,7 @@ public class DataSetupServiceReview implements CommandLineRunner {
                 "projectId3",
                 "Champlain Pet Clinic",
                 "A web site to handle champlain's pet clinic",
-                "",
+                "https://i.postimg.cc/htghqdn5/image-2025-02-11-140714380.png",
                 List.of(
                         Skill.builder().skillId("skillId1").skillName("Java").build(),
                         Skill.builder().skillId("skillId2").skillName("Spring Boot").build(),

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { PathRoutes } from './path.routes';
 import HomePage from './pages/HomePage';
 import FelixPage from './pages/FelixPage';
@@ -10,6 +10,10 @@ import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import CommentsPage from './pages/CommentsPage';
 import AddCommentsPage from './pages/AddCommentsPage';
 const router = createBrowserRouter([
+  {
+    path: PathRoutes.Default, // Path for "/"
+    element: <Navigate to={PathRoutes.HomePage} replace />,
+  },
   {
     path: PathRoutes.HomePage,
     element: <HomePage />,

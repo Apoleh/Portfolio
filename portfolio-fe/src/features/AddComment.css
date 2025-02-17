@@ -49,7 +49,7 @@ textarea {
 }
 
 /* Submit button */
-.btn {
+.add-comment-form .btn {
     background-color: #0efcff;
     color: #1a1a2e;
     padding: 0.8rem 1.5rem;
@@ -62,7 +62,7 @@ textarea {
     text-shadow: 0 0 10px rgba(14, 252, 255, 0.8);
 }
 
-.btn:hover {
+.add-comment-form .btn:hover {
     background-color: #0056b3;
     text-shadow: 0 0 15px rgba(14, 252, 255, 0.8);
 }
