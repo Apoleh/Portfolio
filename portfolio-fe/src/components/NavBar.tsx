@@ -73,7 +73,7 @@ export const NavBar: React.FC = () => {
     clearAuthData();
     const logoutUrl = `https://dev-q4qzodi6wpd1thnb.us.auth0.com/v2/logout?` +
       `client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&` +
-      `returnTo=${encodeURIComponent('http://localhost:3000/home')}`;
+      `returnTo=${encodeURIComponent('portfolio-fe-app-aqt9o.ondigitalocean.app/home')}`;
 
     window.location.href = logoutUrl;
   };
