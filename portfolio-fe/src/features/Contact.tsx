@@ -6,14 +6,42 @@ const ContactForm: React.FC = (): JSX.Element => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSuccessMessage(null);
+    setErrorMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch('https://getform.io/f/bvrwyekb', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Email sent successfully!');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setErrorMessage('Failed to send email. Please try again.');
+      }
+    } catch (error) {
+      setErrorMessage('Something went wrong. Please try again later.');
+    }
+  };
 
   return (
     <div className="contact-form">
       <button className="btn-back" onClick={() => navigate(-1)}>Back</button>
       <h2>Contact Me</h2>
 
-      <form action="https://getform.io/f/bvrwyekb" method="POST">
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -26,7 +54,7 @@ const ContactForm: React.FC = (): JSX.Element => {
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -39,7 +67,7 @@ const ContactForm: React.FC = (): JSX.Element => {
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="message">Message</label>
           <textarea
@@ -51,10 +79,13 @@ const ContactForm: React.FC = (): JSX.Element => {
             required
           />
         </div>
-        
+
         <input type="hidden" name="_gotcha" style={{ display: 'none' }} />
         <button type="submit">Send</button>
       </form>
+
+      {successMessage && <p className="success-message">{successMessage}</p>}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };

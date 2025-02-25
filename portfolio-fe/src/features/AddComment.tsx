@@ -50,7 +50,7 @@ const AddComment: React.FC = (): JSX.Element => {
                 date: new Date(),
                 isApproved: false,
             });
-            setSuccessMessage('Comment added successfully');
+            setSuccessMessage('Comment submitted successfully and awaiting approval');
             setShowNotification(true);
             setTimeout(() => {
                 navigate('/comments'); // Redirect after success
