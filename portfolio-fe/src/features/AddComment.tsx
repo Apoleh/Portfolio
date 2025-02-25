@@ -54,7 +54,7 @@ const AddComment: React.FC = (): JSX.Element => {
             setShowNotification(true);
             setTimeout(() => {
                 navigate('/comments'); // Redirect after success
-            }, 2000);
+            }, 5000);
         } catch (error) {
             const apiError = error as ApiError;
             setErrorMessage(`Error adding comment: ${apiError.message}`);
