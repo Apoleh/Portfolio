@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link component
 import './Footer.css';
 
 const Footer: React.FC = () => {
@@ -16,9 +17,9 @@ const Footer: React.FC = () => {
       <div className="contact-me">
         <p>
           Feel free to reach out!{' '}
-          <a href="mailto:2231308@champlaincollege.qc.ca" className="contact-me-link">
+          <Link to="/contact" className="contact-me-link">
             Contact Me
-          </a>
+          </Link>
         </p>
       </div>
 

@@ -9,4 +9,6 @@ export enum PathRoutes {
   ProjectDetailsPage = '/project/:projectId',
   CommentsPage = '/comments',
   AddCommentsPage = '/addComment',
+  UpdateFelixpage = '/update/:felixId',
+  ContactPage = '/contact',
 }

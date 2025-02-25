@@ -9,6 +9,8 @@ import CallbackPage from './pages/CallBackPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
 import CommentsPage from './pages/CommentsPage';
 import AddCommentsPage from './pages/AddCommentsPage';
+import UpdateFelixPage from './pages/UpdateFelixPage';
+import ContactPage from './pages/ContactPage';
 const router = createBrowserRouter([
   {
     path: PathRoutes.Default, // Path for "/"
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
   {
     path: PathRoutes.AddCommentsPage,
     element: <AddCommentsPage />,
+  },
+  {
+    path: PathRoutes.UpdateFelixpage,
+    element: <UpdateFelixPage />,
+  },
+  {
+    path: PathRoutes.ContactPage,
+    element: <ContactPage />,
   },
 ]);
 

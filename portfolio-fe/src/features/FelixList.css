@@ -169,3 +169,17 @@
   color: #1a1a2e;
 }
 
+.skills-list {
+  margin-bottom: 20px; /* Add bottom margin to create a gap */
+}
+
+.add-skill-container {
+  margin-top: 75px; /* Optional: add top margin if needed */
+}
+
+.add-skill-input {
+  width: 200px;  /* Set the width to your desired size */
+  max-width: 100%;  /* Optional: Ensures it doesn't exceed container width */
+  padding: 8px;
+  margin-right: 10px;
+}

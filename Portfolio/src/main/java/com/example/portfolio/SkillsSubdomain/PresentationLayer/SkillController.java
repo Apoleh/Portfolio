@@ -1,12 +1,14 @@
 package com.example.portfolio.SkillsSubdomain.PresentationLayer;
 
+import com.example.portfolio.CommentsSubdomain.PresentationLayer.CommentRequestModel;
+import com.example.portfolio.CommentsSubdomain.PresentationLayer.CommentResponseModel;
 import com.example.portfolio.SkillsSubdomain.BusinessLayer.SkillService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("api/v1/skill")
@@ -24,4 +26,18 @@ public class SkillController {
     public Flux<SkillResponseModel> getAllSkills() {
         return skillService.getAllSkills();
     }
+
+    @PostMapping("")
+    public Mono<ResponseEntity<SkillResponseModel>> addSkill(@RequestBody Mono<SkillRequestModel> skillRequestModel) {
+        return skillService.addSkill(skillRequestModel)
+                .map(response -> ResponseEntity.status(HttpStatus.CREATED).body(response));
+    }
+
+    @DeleteMapping("/{skillId}")
+    public Mono<ResponseEntity<Void>> deleteSkill(@PathVariable String skillId) {
+        return skillService.deleteSkill(skillId)
+                .then(Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)))
+                .onErrorResume(e -> Mono.just(new ResponseEntity<Void>(HttpStatus.NOT_FOUND)));
+    }
+
 }
