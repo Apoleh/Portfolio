@@ -8,69 +8,52 @@ const ContactForm: React.FC = (): JSX.Element => {
   const [message, setMessage] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: React.FormEvent): Promise<void> => {
-    event.preventDefault();
-
-    if (!name || !email || !message) {
-      alert('Please fill in all fields.');
-      return;
-    }
-
-    const contactData = {
-      name,
-      email,
-      message,
-    };
-
-    try {
-      // Assuming you will call an API to submit the form (or use another method to handle submission)
-      console.log('Contact form submitted:', contactData);
-      alert('Your message has been sent successfully!');
-      navigate('/felix'); // Navigate to a "Thank You" page or similar
-    } catch (error) {
-      console.error('Error submitting contact form:', error);
-      alert('Failed to send message. Please try again later.');
-    }
-  };
-
   return (
     <div className="contact-form">
       <button className="btn-back" onClick={() => navigate(-1)}>Back</button>
       <h2>Contact Me</h2>
-      <form onSubmit={handleSubmit}>
+
+      <form action="https://getform.io/f/bvrwyekb" method="POST">
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
+            name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Your Name"
             required
           />
         </div>
-
+        
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your Email"
             required
           />
         </div>
-
+        
         <div className="form-group">
           <label htmlFor="message">Message</label>
           <textarea
             id="message"
+            name="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            placeholder="Your Message"
             required
-          ></textarea>
+          />
         </div>
-
-        <button type="submit" className="button btn">Send Message</button>
+        
+        <input type="hidden" name="_gotcha" style={{ display: 'none' }} />
+        <button type="submit">Send</button>
       </form>
     </div>
   );
